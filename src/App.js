@@ -1,12 +1,8 @@
 
-// 引入register
-
-// import moduleName from ''
-
 function App() {
   return (
     <div className="App">
-      <h1>react</h1>
+      <h1>这是住路径</h1>
     </div>
   );
 }
