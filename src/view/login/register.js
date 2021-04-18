@@ -16,7 +16,7 @@ function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-    // 渲染表单列表
+  // 渲染表单列表
   const FormList = [['username', '用户名'], ['password', '密码'], ['netName', '昵称'], ['email', '邮箱'], ['phone', '电话']].map((value, index) => {
     const usetype = value[0] === 'password' ? 'password' : 'text'
     return (
