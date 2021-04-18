@@ -1,5 +1,8 @@
 import { useState } from "react"
 
+// 引入api
+import { registerUser } from '@/api/login'
+
 function Register() {
 
   // state
@@ -31,6 +34,11 @@ function Register() {
   // 提交内容
   const addUser = function () {
     console.log(formData)
+    registerUser(formData).then(resp => {
+      console.log(resp)
+    }).catch(error => {
+      console.log(error)
+    })
   }
 
   return (

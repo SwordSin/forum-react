@@ -36,12 +36,12 @@
       "Promise": true
   },
   "rules": {
-      "no-console": [1, { "allow": ["error"] }],
+      "no-console": "off",
       "consistent-return": 2,
-      "curly": [2, "multi-or-nest"],
       "dot-location": 0,
       "eqeqeq": 2,
-      "no-alert": 2,
+      "no-alert": "warn",
+      "no-debugger": "off",
       "no-eq-null": 2,
       "no-lone-blocks": 2,
       "no-return-await": 2,
