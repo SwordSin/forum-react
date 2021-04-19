@@ -1,12 +1,29 @@
 // 重写webpack配置
 
-const { override, addWebpackAlias } = require('customize-cra')
+const { override, addWebpackAlias
+  // , overrideDevServer
+} = require('customize-cra')
 const path = require('path')
 const resolve = dir => path.join(__dirname, '.', dir)
 
-module.exports = override(
+// const devServerConfig = () => config => {
+//   return {
+//     ...config,
+//     proxy: {
+//       '/api': {
+//         target: 'http://localhost:8889',
+//         changeOrigin: true,
+//         secure: false
+//       }
+//     }
+//   }
+// }
 
-  addWebpackAlias({
-    '@': resolve('src')
-  })
-)
+module.exports = {
+  webpack: override(
+    addWebpackAlias({
+      '@': resolve('src')
+    })
+  )
+  // devServer: overrideDevServer(devServerConfig())
+}

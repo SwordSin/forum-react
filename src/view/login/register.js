@@ -21,11 +21,16 @@ function Register() {
 
   // 渲染表单列表
   const FormList = [['username', '用户名'], ['password', '密码'], ['netName', '昵称'], ['email', '邮箱'], ['phone', '电话']].map((value, index) => {
-    const usetype = value[0] === 'password' ? 'password' : 'text'
+    let usetype = 'text'
+    if (value[0] === 'password') {
+      usetype = 'password'
+    } else if (value[0] === 'phone') {
+      usetype = 'number'
+    }
     return (
       <div key={index.toString()}>
         <label htmlFor={value[0]}>{value[1]}</label>
-        <input type={usetype} name={value[0]} id={value[0]} value={formData[value[0]]} onChange={changeInput}  />
+        <input type={usetype} name={value[0]} id={value[0]} value={formData[value[0]]} onChange={changeInput} />
       </div>
     )
   }
