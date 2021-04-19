@@ -48,7 +48,7 @@ function Register() {
 
   return (
     <div>
-      <h3>欢迎加入</h3>
+      <h3>欢迎sdafasdfsdafas加入</h3>
       {FormList}
       <button type="button" onClick={ addUser }>提交</button>
     </div>
