@@ -1,5 +1,4 @@
 import { useState } from "react"
-
 // 引入api
 import { registerUser } from '@/api/login'
 
@@ -14,7 +13,7 @@ function Register() {
     'phone': ''
   })
 
-  const changeInput = function (e) {
+  const changeInput = function (e:any) {
     // debugger
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
