@@ -2,19 +2,11 @@ import { useState } from "react"
 // 引入api
 import { registerUser } from '@/api/login'
 
-// 定义接口
-interface RegisterInfo {
-  username: string;
-  password: string;
-  netName: string;
-  email: string;
-  phone: string;
-}
 
 function Register() {
 
   // state
-  const registerInfo:RegisterInfo =  {
+  const registerInfo =  {
     'username': '',
     'password': '',
     'netName': '',
