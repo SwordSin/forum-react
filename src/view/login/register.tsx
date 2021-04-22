@@ -2,16 +2,26 @@ import { useState } from "react"
 // 引入api
 import { registerUser } from '@/api/login'
 
+// 定义接口
+interface RegisterInfo {
+  username: string;
+  password: string;
+  netName: string;
+  email: string;
+  phone: string;
+}
+
 function Register() {
 
   // state
-  const [formData, setFormData] = useState({
+  const registerInfo:RegisterInfo =  {
     'username': '',
     'password': '',
     'netName': '',
     'email': '',
     'phone': ''
-  })
+  }
+  const [formData, setFormData] = useState(registerInfo)
 
   const changeInput = function (e:any) {
     // debugger
@@ -37,7 +47,6 @@ function Register() {
 
   // 提交内容
   const addUser = function () {
-    console.log(formData)
     registerUser(formData).then(resp => {
       console.log(resp)
     }).catch(error => {
