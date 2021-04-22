@@ -1,4 +1,4 @@
-import request from '@/unit/request'
+import request from '@/unit/api'
 
 import {
   RegisterInfo // 注册接口

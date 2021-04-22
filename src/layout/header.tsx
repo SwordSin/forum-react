@@ -1,5 +1,5 @@
 // import styled from 'styled-components'
-import HeaderStyle from './style/HeaderStyle.module.scss'
+const HeaderStyle= require('./style/HeaderStyle.module.scss') 
 
 
 const Header = function () {

@@ -40,7 +40,8 @@ function Register() {
   // 提交内容
   const addUser = function () {
     registerUser(formData).then(resp => {
-      console.log(resp)
+      const userId: number = resp.data
+      console.log('userid: ', userId)
     }).catch(error => {
       console.log(error)
     })
