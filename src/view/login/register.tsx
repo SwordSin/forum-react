@@ -1,6 +1,7 @@
 import { useState } from "react"
 // 引入api
 import { registerUser } from '@/api/login'
+import { Button, Input } from 'antd'
 
 
 function Register() {
@@ -15,7 +16,8 @@ function Register() {
   }
   const [formData, setFormData] = useState(registerInfo)
 
-  const changeInput = function (e:any) {
+  const changeInput = function (e: any) {
+    // debugger
     // debugger
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -30,8 +32,7 @@ function Register() {
     }
     return (
       <div key={index.toString()}>
-        <label htmlFor={value[0]}>{value[1]}</label>
-        <input type={usetype} name={value[0]} id={value[0]} value={formData[value[0]]} onChange={changeInput} />
+        <Input value={formData[value[0]]} name={ value[0] } onChange={changeInput} />
       </div>
     )
   }
@@ -51,7 +52,7 @@ function Register() {
     <div>
       <h3>欢迎sdafasdfsdafas加入</h3>
       {FormList}
-      <button type="button" onClick={ addUser }>提交</button>
+      <Button type="primary" onClick={ addUser } size="small">提交</Button>
     </div>
   )
 }
