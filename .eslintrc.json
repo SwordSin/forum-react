@@ -36,6 +36,7 @@
       "Promise": true
   },
   "rules": {
+      "no-unused-vars": "warn",
       "no-console": "off",
       "consistent-return": 2,
       "dot-location": 0,
