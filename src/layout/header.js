@@ -6,13 +6,13 @@ const Header = function () {
   return (
     <header className={HeaderStyle.header}>
       叔本华
-      <div>
+      {/* <div>
         登录
       </div>
       <div>
         <label>搜索:</label>
         <input></input>
-      </div>
+      </div> */}
     </header>
   )
 }

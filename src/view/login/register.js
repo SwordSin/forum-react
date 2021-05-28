@@ -1,56 +1,75 @@
-import { useState } from "react"
-
 // 引入api
 import { registerUser } from '@/api/login'
 
+import { Form, Input, Button } from 'antd'
+
+import RegistryStyle from './style/RegistryStyle.module.scss'
+
+
+// 表单的label 和 wrapper分布情况
+const layout = {
+  labelCol: { span: 5 },
+  wrapperCol: { span: 19 }
+}
+
+// 提交按钮
+const tailLayout = {
+  wrapperCol: { offset: 5, span: 19 }
+}
+  
+
 function Register() {
 
-  // state
-  const [formData, setFormData] = useState({
-    'username': '',
-    'password': '',
-    'netName': '',
-    'email': '',
-    'phone': ''
-  })
 
-  const changeInput = function (e) {
-    // debugger
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  // 渲染表单列表
-  const FormList = [['username', '用户名'], ['password', '密码'], ['netName', '昵称'], ['email', '邮箱'], ['phone', '电话']].map((value, index) => {
-    let usetype = 'text'
-    if (value[0] === 'password') {
-      usetype = 'password'
-    } else if (value[0] === 'phone') {
-      usetype = 'number'
-    }
-    return (
-      <div key={index.toString()}>
-        <label htmlFor={value[0]}>{value[1]}</label>
-        <input type={usetype} name={value[0]} id={value[0]} value={formData[value[0]]} onChange={changeInput} />
-      </div>
-    )
-  }
-  )
-
-  // 提交内容
-  const addUser = function () {
-    console.log(formData)
-    registerUser(formData).then(resp => {
-      console.log(resp)
+  // 点击提交
+  const onFinish = (values) => {
+    registerUser(values).then(resp => {
+      const userId = resp.data
+      console.log('userid: ', userId)
     }).catch(error => {
       console.log(error)
     })
   }
 
+  // 渲染表单列表
+  const FormList = [
+    ['username', '用户名'],
+    ['password', '密码'],
+    ['netName', '昵称'],
+    ['email', '邮箱'],
+    ['phone', '电话']].map((value, index) => {
+      let InputType = null
+      if (value[0] === 'password') {
+        InputType = <Input.Password />
+      } else {
+        InputType = <Input />
+      }
+      return (
+        <Form.Item
+            key={index.toString()}
+            label= {value[1]}
+            name={value[0]}
+        >
+          {InputType}
+        </Form.Item>
+      )
+    }
+  )
+
   return (
-    <div>
-      <h3>欢迎sdafasdfsdafas加入</h3>
-      {FormList}
-      <button type="button" onClick={ addUser }>提交</button>
+    <div className={RegistryStyle.registryBox}>
+      <Form
+          {...layout}
+          name="basic"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}>
+        {FormList}
+        <Form.Item {...tailLayout}>
+          <Button type="primary" htmlType="submit">
+            注册
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   )
 }

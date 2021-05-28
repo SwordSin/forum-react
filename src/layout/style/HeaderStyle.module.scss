@@ -7,36 +7,36 @@ $font-caret-color: #ffffff;
   color: $font-caret-color;
   line-height: $header-height;
   box-sizing: border-box;
-  padding: 0 120px;
+  padding: 0 50px;
   font-size: 27px;
 }
 
-.header > div {
-  float: right;
-  line-height: $header-height;
-  font-size: 15px;
-  margin-left: 20px;
-  label {
-    margin-right: 10px;
-  }
-  input {
-    background-color: $color-header-bg;
-    border: 1px solid $font-caret-color;
-    height: 27px;
-    caret-color: $font-caret-color;
-    padding-left: 10px;
-    border-radius: 4px;
-    outline: -webkit-focus-ring-color auto 1px;
-    outline-offset: 0px;
-    color: rgba($color: #ffffff, $alpha: 0.8);
-  }
-}
-.header > div:first-child {
-  cursor: pointer;
-}
+// .header > div {
+//   float: right;
+//   line-height: $header-height;
+//   font-size: 15px;
+//   margin-left: 20px;
+//   label {
+//     margin-right: 10px;
+//   }
+//   input {
+//     background-color: $color-header-bg;
+//     border: 1px solid $font-caret-color;
+//     height: 27px;
+//     caret-color: $font-caret-color;
+//     padding-left: 10px;
+//     border-radius: 4px;
+//     outline: -webkit-focus-ring-color auto 1px;
+//     outline-offset: 0px;
+//     color: rgba($color: #ffffff, $alpha: 0.8);
+//   }
+// }
+// .header > div:first-child {
+//   cursor: pointer;
+// }
 
-.header > div:first-child:hover {
-  cursor: pointer;
-  color: rgba($color: #ffffff, $alpha: 0.8);
-}
+// .header > div:first-child:hover {
+//   cursor: pointer;
+//   color: rgba($color: #ffffff, $alpha: 0.8);
+// }
 
