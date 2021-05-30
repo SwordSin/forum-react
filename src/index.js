@@ -7,9 +7,11 @@ import 'antd/dist/antd.css'
 // import App from './App'
 // 引入路由
 import Router from '@/route'
+// import Header from '@/layout/header'
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <Header></Header> */}
     <Router></Router>
   </React.StrictMode>,
   document.getElementById('root')

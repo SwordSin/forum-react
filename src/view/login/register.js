@@ -1,8 +1,9 @@
+import { Form, Input, Button } from 'antd'
+// import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
 // 引入api
 import { registerUser } from '@/api/login'
-
-import { Form, Input, Button } from 'antd'
-
 import RegistryStyle from './style/RegistryStyle.module.scss'
 
 
@@ -16,10 +17,28 @@ const layout = {
 const tailLayout = {
   wrapperCol: { offset: 5, span: 19 }
 }
-  
+
+// const LoginButton = styled.h1`
+//   margin-right: 10px;
+// `
+
+// const getLogin = function () {
+//   console.log('this is logisn')
+// }
+
+// 表单验证内容
+const rulesMsg = {
+  most: [{ required: true, message: '' }],
+  number: [{ required: true, pattern: /^[1-9]\d*$/g, message: '请输入电话!' }],
+  // /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
+  email: [{
+    required: true,
+    pattern: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
+    message: '请输入邮箱'
+  }]
+}
 
 function Register() {
-
 
   // 点击提交
   const onFinish = (values) => {
@@ -33,11 +52,11 @@ function Register() {
 
   // 渲染表单列表
   const FormList = [
-    ['username', '用户名'],
-    ['password', '密码'],
-    ['netName', '昵称'],
-    ['email', '邮箱'],
-    ['phone', '电话']].map((value, index) => {
+    ['username', '用户名', 'most'],
+    ['password', '密码', 'most'],
+    ['netName', '昵称', 'most'],
+    ['email', '邮箱', 'email'],
+    ['phone', '电话', 'number']].map((value, index) => {
       let InputType = null
       if (value[0] === 'password') {
         InputType = <Input.Password />
@@ -47,8 +66,9 @@ function Register() {
       return (
         <Form.Item
             key={index.toString()}
-            label= {value[1]}
+            label={value[1]}
             name={value[0]}
+            rules={ rulesMsg[value[2]] }
         >
           {InputType}
         </Form.Item>
@@ -65,6 +85,11 @@ function Register() {
           onFinish={onFinish}>
         {FormList}
         <Form.Item {...tailLayout}>
+          <Link to="/login">
+            <Button type="primary" style={{ marginRight: '10px' }}>
+              登录
+            </Button>
+          </Link>
           <Button type="primary" htmlType="submit">
             注册
           </Button>
