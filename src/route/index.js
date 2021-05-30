@@ -7,6 +7,8 @@ import Login from '@/view/login/login'
 import Header from '@/layout/header'
 import Report from '@/view/report/report-one'
 import Com404 from '@/component/404/404'
+import HomePage from '@/view/homepage/index'
+
 // import App from '@/App'
 
 
@@ -22,7 +24,8 @@ const MyRouter = function () {
       <Switch>
         <Route path="/register" component={ Register }></Route>
         <Route path="/login" component={ Login }></Route>
-        <Route path="/report" component={Report}></Route>
+        <Route path="/report" component={ Report }></Route>
+        <Route path="/homepage" component={ HomePage }></Route>
         { UsePath }
       </Switch>
     </BrowserRouter>
