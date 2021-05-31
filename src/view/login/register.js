@@ -1,4 +1,4 @@
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 // import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -38,13 +38,23 @@ const rulesMsg = {
   }]
 }
 
-function Register() {
+function Register(props) {
+  console.log('zhuce props')
+  console.log(props)
 
   // 点击提交
   const onFinish = (values) => {
     registerUser(values).then(resp => {
-      const userId = resp.data
-      console.log('userid: ', userId)
+      if (resp === -1) {
+        message.error('主键重复错误')
+      } else if (resp === -2) {
+        message.error('系统错误')
+      } else {
+        const userId = resp
+        console.log('userid: ', userId)
+        // 注册成功后跳转到登录页面
+        props.history.push('/login')
+      }
     }).catch(error => {
       console.log(error)
     })
