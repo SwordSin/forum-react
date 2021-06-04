@@ -2,6 +2,7 @@ import { Form, Input, Button, Checkbox } from 'antd'
 import { Link } from 'react-router-dom'
 
 import LoginStyle from './style/LoginStyle.module.scss'
+import { loginUser } from '@/api/login'
 
 const layout = {
   labelCol: { span: 5 },
@@ -14,7 +15,12 @@ const tailLayout = {
 
 const Login = () => {
   const onFinish = (values) => {
-    console.log('Success:', values)
+    loginUser(values).then(resp => {
+      console.log(resp)
+    }).catch(error => {
+      console.log(error)
+    })
+    // console.log('Success:', values)
   }
 
   const onFinishFailed = (errorInfo) => {
