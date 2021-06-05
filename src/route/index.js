@@ -22,6 +22,7 @@ const MyRouter = function () {
   }
   // 判断是否已经登录
   let redirectLogin = null
+  // debugger
   if (document.cookie.indexOf('admin-login=true') < 0) {
     // 未登录
     redirectLogin = <Redirect to="/login" />
