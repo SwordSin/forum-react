@@ -19,6 +19,8 @@ const Login = (props) => {
       console.log(resp)
       if (resp === 1) {
         // 跳转页面
+        // 写入cookie
+        document.cookie = "admin-login=true;path=/"
         props.history.push('/homepage')
       }
     }).catch(error => {
