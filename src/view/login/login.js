@@ -13,10 +13,14 @@ const tailLayout = {
   wrapperCol: { offset: 5, span: 19 }
 }
 
-const Login = () => {
+const Login = (props) => {
   const onFinish = (values) => {
     loginUser(values).then(resp => {
       console.log(resp)
+      if (resp === 1) {
+        // 跳转页面
+        props.history.push('/homepage')
+      }
     }).catch(error => {
       console.log(error)
     })
@@ -32,7 +36,7 @@ const Login = () => {
       <Form
           {...layout}
           name="basic"
-          initialValues={{ remember: true }}
+          initialValues={{ remember: true, username: 'admin', password: 'admin' }}
           onFinish={ onFinish }
           onFinishFailed={onFinishFailed}
       >

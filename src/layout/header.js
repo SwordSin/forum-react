@@ -8,11 +8,14 @@ import HeaderStyle from './style/HeaderStyle.module.scss'
 // import Report from '@/view/report/report-one'
 
 
-const Header = function () {
+const Header = function (props) {
   return (
     <div>
       <header className={HeaderStyle.header}>
-        叔本华
+        <span style={{cursor: 'pointer'}} onClick={() => {props.history.push('/homepage')}}>
+        {/* <span style={{cursor: 'pointer'}} onClick={() => {console.log('aa')}}> */}
+          叔本华
+        </span>
       </header>
       {/* <main>
         <BrowserRouter>
