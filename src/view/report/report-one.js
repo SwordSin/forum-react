@@ -1,4 +1,4 @@
-import { Table/* , Tag, Space*/ } from 'antd'
+import { Table/* , Tag, Space*/,  Spin  } from 'antd'
 import { getBigDataAll } from '@/api/bigdata'
 
 import { useEffect, useState } from 'react'
@@ -60,12 +60,14 @@ const columns = [
 
 const ReportOne = function () {
   const [data, setData] = useState([])
+  const [loadingTable, setLoadingTable] = useState(true)
   // debugger
   // console.log(getBigDataAll())
   console.log('----jiazai repsort')
   useEffect(() => {
     getBigDataAll().then(resp => {
       setData(resp)
+      setLoadingTable(false)
       console.log(resp)
     }).catch(error => {
       console.log(error)
@@ -73,7 +75,7 @@ const ReportOne = function () {
   }, []) // 仅在dom加载的时候执行一次
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} loading={ loadingTable } />
     </div>
   )
 }
