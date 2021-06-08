@@ -1,54 +1,58 @@
-import { Table, Tag, Space } from 'antd'
+import { Table/* , Tag, Space*/ } from 'antd'
 import { getBigDataAll } from '@/api/bigdata'
 
 import { useEffect, useState } from 'react'
 
+/*
+  "orderNumber": 211234,
+  "costomerId": 123123,
+  "commodity": "zasdf",
+  "commodityId": 0,
+  "price": 12.123,
+  "discount": 0.2,
+  "orderTime": "2021-06-17 02:46:21",
+  "payTime": "2021-06-23 02:46:25"
+*/
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a>{text}</a>
+    title: '订单编号',
+    dataIndex: 'orderNumber',
+    key: 'orderNumber'
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age'
+    title: '消费者Id',
+    dataIndex: 'costomerId',
+    key: 'costomerId'
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address'
+    title: '商品名称',
+    dataIndex: 'commodity',
+    key: 'commodity'
   },
   {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <div>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green'
-          if (tag === 'loser') {
-            color = 'volcano'
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          )
-        })}
-      </div>
-    )
+    title: '商品Id',
+    dataIndex: 'commodityId',
+    key: 'commodityId'
   },
   {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    )
+    title: '价格',
+    dataIndex: 'price',
+    key: 'price'
+  },
+  {
+    title: '折扣',
+    dataIndex: 'discount',
+    key: 'discount'
+  },
+  {
+    title: '下单时间',
+    dataIndex: 'orderTime',
+    key: 'orderTime'
+  },
+  {
+    title: '支付时间',
+    dataIndex: 'payTime',
+    key: 'payTime'
   }
 ]
 
@@ -61,17 +65,7 @@ const ReportOne = function () {
   console.log('----jiazai repsort')
   useEffect(() => {
     getBigDataAll().then(resp => {
-      const tmpData = []
-      for (let i = 0; i < resp.length; i++) {
-        tmpData.push({
-          key: resp[i].id,
-          name: resp[i].test1,
-          age: resp[i].test6,
-          address: resp[i].test2,
-          tags: [resp[i].test3]
-        })
-      }
-      setData(tmpData)
+      setData(resp)
       console.log(resp)
     }).catch(error => {
       console.log(error)
