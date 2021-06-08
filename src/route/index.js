@@ -8,7 +8,6 @@ import Header from '@/layout/header'
 import Report from '@/view/report/report-one'
 import Com404 from '@/component/404/404'
 import HomePage from '@/view/homepage/index'
-import ReportOne from '@/view/report/report-one'
 
 // import App from '@/App'
 
@@ -41,7 +40,7 @@ const MyRouter = function () {
         { redirectLogin }
         <Route path="/homepage" component={ HomePage }></Route>
         <Route path="/register" component={ Register }></Route>
-        <Route path="/report" component={ ReportOne } test="aaa"></Route>
+        <Route path="/report" component={ Report } test="aaa"></Route>
         { UsePath }
       </Switch>
     </BrowserRouter>

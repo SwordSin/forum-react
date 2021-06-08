@@ -20,8 +20,11 @@ const Login = () => {
       debugger
       if (resp === 1) {
         // 跳转页面
+        // 设置cookie过期时间
+        const exp = new Date()
+        exp.setTime(exp.getTime() + 3600 * 1000 * 2) // 过期时间 2小时
         // 写入cookie
-        document.cookie = "admin-login=true;path=/"
+        document.cookie = "admin-login=true;path=/;expires=" + exp.toGMTString()  // "Tue, 08 Jun 2021 16:24:09 GMT"
         location.pathname = '/homepage'
         // props.history.push('/homepage')
       }
