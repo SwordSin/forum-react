@@ -8,6 +8,7 @@ import Header from '@/layout/header'
 import Report from '@/view/report/report-one'
 import Com404 from '@/component/404/404'
 import HomePage from '@/view/homepage/index'
+import ReportOne from '@/view/report/report-one'
 
 // import App from '@/App'
 
@@ -15,17 +16,22 @@ import HomePage from '@/view/homepage/index'
 const MyRouter = function () {
   console.log('是否已经登录')
   console.log(document.cookie.indexOf('admin-login=true'))
+  const isLogin = document.cookie.indexOf('admin-login=true') < 0 // true 没有登录
   // 判断时跳转到404 还是登录页面
   let UsePath = <Route path="*" component={ Com404 }></Route>
-  if (location.pathname === '/') {
-    UsePath = <Redirect path="/" to="/login" />
+  if (location.pathname === '/' && isLogin) {
+      UsePath = <Redirect path="/" to="/login" />
   }
   // 判断是否已经登录
   let redirectLogin = null
-  // debugger
-  if (document.cookie.indexOf('admin-login=true') < 0) {
+  if (isLogin) {
     // 未登录
     redirectLogin = <Redirect to="/login" />
+  } else {
+    // 如果已经登录 - 并且路由时login或/
+    if (location.pathname === '/login' || location.pathname === '/') {
+      location.pathname = 'homepage'
+    }
   }
   return (
     <BrowserRouter>
@@ -33,9 +39,9 @@ const MyRouter = function () {
       <Switch>
         <Route path="/login" component={ Login }></Route>
         { redirectLogin }
-        <Route path="/register" component={ Register }></Route>
-        <Route path="/report" component={ Report }></Route>
         <Route path="/homepage" component={ HomePage }></Route>
+        <Route path="/register" component={ Register }></Route>
+        <Route path="/report" component={ ReportOne } test="aaa"></Route>
         { UsePath }
       </Switch>
     </BrowserRouter>

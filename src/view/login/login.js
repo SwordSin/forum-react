@@ -13,15 +13,17 @@ const tailLayout = {
   wrapperCol: { offset: 5, span: 19 }
 }
 
-const Login = (props) => {
+const Login = () => {
   const onFinish = (values) => {
     loginUser(values).then(resp => {
       console.log(resp)
+      debugger
       if (resp === 1) {
         // 跳转页面
         // 写入cookie
         document.cookie = "admin-login=true;path=/"
-        props.history.push('/homepage')
+        location.pathname = '/homepage'
+        // props.history.push('/homepage')
       }
     }).catch(error => {
       console.log(error)

@@ -1,4 +1,7 @@
 import { Table, Tag, Space } from 'antd'
+import { getBigDataAll } from '@/api/bigdata'
+
+import { useEffect, useState } from 'react'
 
 const columns = [
   {
@@ -22,7 +25,7 @@ const columns = [
     key: 'tags',
     dataIndex: 'tags',
     render: tags => (
-      <>
+      <div>
         {tags.map(tag => {
           let color = tag.length > 5 ? 'geekblue' : 'green'
           if (tag === 'loser') {
@@ -34,7 +37,7 @@ const columns = [
             </Tag>
           )
         })}
-      </>
+      </div>
     )
   },
   {
@@ -49,32 +52,31 @@ const columns = [
   }
 ]
 
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer']
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser']
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher']
-  }
-]
-
+// const data = []
 
 const ReportOne = function () {
+  const [data, setData] = useState([])
+  // debugger
+  // console.log(getBigDataAll())
+  console.log('----jiazai repsort')
+  useEffect(() => {
+    getBigDataAll().then(resp => {
+      const tmpData = []
+      for (let i = 0; i < resp.length; i++) {
+        tmpData.push({
+          key: resp[i].id,
+          name: resp[i].test1,
+          age: resp[i].test6,
+          address: resp[i].test2,
+          tags: [resp[i].test3]
+        })
+      }
+      setData(tmpData)
+      console.log(resp)
+    }).catch(error => {
+      console.log(error)
+    })
+  }, []) // 仅在dom加载的时候执行一次
   return (
     <div>
       <Table columns={columns} dataSource={data} />
