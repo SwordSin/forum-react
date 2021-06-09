@@ -17,7 +17,7 @@ const Login = () => {
   const onFinish = (values) => {
     loginUser(values).then(resp => {
       console.log(resp)
-      debugger
+      // debugger
       if (resp === 1) {
         // 跳转页面
         // 设置cookie过期时间

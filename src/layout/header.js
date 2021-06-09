@@ -14,7 +14,7 @@ const Header = function (props) {
       <header className={HeaderStyle.header}>
         <span style={{cursor: 'pointer'}} onClick={() => {props.history.push('/homepage')}}>
         {/* <span style={{cursor: 'pointer'}} onClick={() => {console.log('aa')}}> */}
-          叔本华
+          首页
         </span>
       </header>
       {/* <main>

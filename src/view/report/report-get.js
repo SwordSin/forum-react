@@ -1,4 +1,4 @@
-import { Table/* , Tag, Space*/,  Spin  } from 'antd'
+import { Table/* , Tag, Space,  Spin*/  } from 'antd'
 import { getBigDataAll } from '@/api/bigdata'
 
 import { useEffect, useState } from 'react'
