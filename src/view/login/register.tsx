@@ -24,12 +24,12 @@ function Register() {
 
   // 渲染表单列表
   const FormList = [['username', '用户名'], ['password', '密码'], ['netName', '昵称'], ['email', '邮箱'], ['phone', '电话']].map((value, index) => {
-    let usetype = 'text'
-    if (value[0] === 'password') {
-      usetype = 'password'
-    } else if (value[0] === 'phone') {
-      usetype = 'number'
-    }
+    // let usetype = 'text'
+    // if (value[0] === 'password') {
+    //   usetype = 'password'
+    // } else if (value[0] === 'phone') {
+    //   usetype = 'number'
+    // }
     return (
       <div key={index.toString()}>
         <Input value={formData[value[0]]} name={ value[0] } onChange={changeInput} />
